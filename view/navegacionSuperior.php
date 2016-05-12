@@ -12,8 +12,8 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Ayuda</a></li>
+                <li><a style="cursor:pointer" onclick="menuPrincipal('perfil')">Perfil</a></li>
+                <li><a style="cursor:pointer" onclick="menuPrincipal('acerca')">Acerca de</a></li>
                 <li><a href="#">Cerrar sesión</a></li>
             </ul>
         </div>
