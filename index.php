@@ -3,7 +3,7 @@
 <html lang="es">
 
 <!-- head -->
-<?php require("/view/header.php"); ?>
+<?php require(dirname(__FILE__) . '/view/header.php'); ?>
 
 <body cz-shortcut-listen="true">
 
