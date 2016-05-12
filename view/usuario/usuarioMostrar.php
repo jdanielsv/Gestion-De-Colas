@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php
 
 require ('/conf/conexion.php');
@@ -11,6 +12,9 @@ if ($conn->connect_error) {
     $result = $conn->query($sql);
 }
 ?>
+=======
+<h1 class="page-header">Listado usuarios</h1>
+>>>>>>> Stashed changes
 <div class="row">
     <div class="col-md-12">
 
@@ -18,7 +22,10 @@ if ($conn->connect_error) {
             <div class="panel-heading">
                 <div class="row">
                     <div class="col col-xs-6">
+<<<<<<< Updated upstream
                         <h3 class="panel-title">Listado usuario</h3>
+=======
+>>>>>>> Stashed changes
                     </div>
                     <div class="col col-xs-6 text-right">
                         <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#myModal">Nuevo usuario</button>
@@ -39,6 +46,7 @@ if ($conn->connect_error) {
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< Updated upstream
                             
                             
                             <?php
@@ -78,6 +86,42 @@ if ($conn->connect_error) {
 </div>
 
 </div>
+=======
+                        <tr>
+                            <td align="center">
+                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                            </td>
+                            <td class="hidden-xs">1</td>
+                            <td>David</td>
+                            <td>Salas castro</td>
+                            <td>pass</td>
+                            <td>Admin</td>
+                            <td>davidsalascastro@gmail.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col col-xs-4">Página 1 de 1
+                    </div>
+                    <div class="col col-xs-8">
+                        <ul class="pagination hidden-xs pull-right">
+                            <li><a href="#">1</a></li>
+                        </ul>
+                        <ul class="pagination visible-xs pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+>>>>>>> Stashed changes
 </div>
 
 
