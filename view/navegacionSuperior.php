@@ -12,7 +12,6 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Configuración</a></li>
                 <li><a href="#">Perfil</a></li>
                 <li><a href="#">Ayuda</a></li>
                 <li><a href="#">Cerrar sesión</a></li>

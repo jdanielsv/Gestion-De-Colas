@@ -1,4 +1,4 @@
-<?php require "../conf/conexion.php";
+<?php require "/conf/conexion.php";
 
 function insertarUsuario($usuario,$apellido,$rol,$correo,$pass){
     conexion();

@@ -1,4 +1,4 @@
-<form role="form" method="post" action="./controller/usuariocontroller.php"> 
+<form role="form" method="post" action="/controller/usuariocontroller.php"> 
   <div class="form-group">
     <label for="ejemplo_email_1">Usuario</label>
     <input name="usuario" class="form-control" placeholder="Introduce tu email">

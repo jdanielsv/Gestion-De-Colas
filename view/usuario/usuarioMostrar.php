@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="es">
-
-<!-- head -->
-<?php require("../header.php"); ?>
-
-    <body cz-shortcut-listen="true">
-
-        <!-- menu navegacion superior -->
-        <?php require("../navegacionSuperior.php"); ?>
-
-            <div class="container-fluid">
-                <div class="row">
-
-                    <!--menuuu izquierda-->
-                    <?php require("/menu.php"); ?>
-                        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                            <h1 class="page-header">Panel principal</h1>
-
-                            <div class="row">
+<div class="row">
                                 <div class="col-md-12">
 
                                     <div class="panel panel-default panel-table">
@@ -81,16 +61,6 @@
 
                                 </div>
                             </div>
-
-                        </div>
-                </div>
-            </div>
-    </body>
-
-</html>
-
-
-
 
 
 
