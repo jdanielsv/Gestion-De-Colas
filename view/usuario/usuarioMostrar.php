@@ -3,27 +3,20 @@
 <html lang="es">
 
 <!-- head -->
-<?php require("./view/header.php"); ?>
+<?php require("../header.php"); ?>
 
-<body cz-shortcut-listen="true">
+    <body cz-shortcut-listen="true">
 
-    <!-- menu navegacion superior -->
-    <?php require("./view/navegacionSuperior.php"); ?>
-    
-    <div class="container-fluid">
-        <div class="row">
-            
-            <!--menuuu izquierda-->
-            <?php require("./view/menu.php"); ?>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Panel principal</h1>
+        <!-- menu navegacion superior -->
+        <?php require("../navegacionSuperior.php"); ?>
 
-                <!-- Aqui se muestra contenido que cambia -->
-
+            <div class="container-fluid">
                 <div class="row">
 
                     <!--menuuu izquierda-->
-                    
+                    <?php require("/menu.php"); ?>
+                        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                            <h1 class="page-header">Panel principal</h1>
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -89,13 +82,38 @@
                                 </div>
                             </div>
 
-                        
+                        </div>
+                </div>
+            </div>
+    </body>
 
-                <!-- Fin contenido -->
-                
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- Ventana emergente -->
+
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</div>-->
