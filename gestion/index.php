@@ -3,7 +3,6 @@
 <html lang="es">
 
 <?php require(dirname(__FILE__) . '/view/header.php'); ?>
-
     <body cz-shortcut-listen="true">
         <?php require(dirname(__FILE__) . '/view/navegacionSuperior.php'); ?>
         <?php require(dirname(__FILE__).'/view/menu.php'); ?>
@@ -20,10 +19,9 @@
             <div style="display:none" id="listaCola">
                 <?php require(dirname(__FILE__) . '/view/cola/colaMostrar.php'); ?>
             </div>
-            <div style="display:none" id="listausuarios">
+            <div id="listausuarios">
                 <?php require(dirname(__FILE__) . '/view/usuario/usuarioMostrar.php'); ?>
             </div>
         </div>
     </body>
-
 </html>
