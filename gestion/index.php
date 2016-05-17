@@ -23,12 +23,35 @@
             <div style="display:none" id="configuracion">
                 <?php require(dirname(__FILE__) . '/view/configuracion/configuracion.php'); ?>
             </div>
-            <div style="display:none" id="listaCola">
-                <?php require(dirname(__FILE__) . '/view/cola/colaMostrar.php'); ?>
-            </div>
-            <div id="listausuarios">
-                <?php require(dirname(__FILE__) . '/view/usuario/usuarioMostrar.php'); ?>
-            </div>
+            <?php 
+            if($rol=="Admin")
+            {
+                
+            echo "<div style='display:none' id='listaCola''>";
+            require(dirname(__FILE__) . '/view/cola/colaMostrar.php');
+            echo "</div>";
+            
+                
+            echo "<div id='listausuarios'>";
+            require(dirname(__FILE__) . '/view/usuario/usuarioMostrar.php');
+            echo "</div>";
+                
+            }
+            else
+            {
+                
+            echo "<div id='listaCola''>";
+            require(dirname(__FILE__) . '/view/cola/colaMostrar.php');
+            echo "</div>";
+            
+                
+            echo "<div style='display:none' id='listausuarios'>";
+            require(dirname(__FILE__) . '/view/usuario/usuarioMostrar.php');
+            echo "</div>";
+                
+            }
+            
+            ?>
         </div>
     </body>
 </html>
