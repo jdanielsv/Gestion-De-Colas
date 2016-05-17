@@ -115,3 +115,24 @@ function actualizarUsuario(){
         }
     });
 }
+function login(){
+    var email=$('#email').val();
+    var password=$('#password').val();
+    jQuery.ajax({
+        type: "POST",
+        url: "/gestion-De-Colas/gestion/view/usuario/login.php",
+        data: {
+            'email':email,
+            'password':password
+        },
+        success: function (msg) {
+            if(msg=="correcto"){
+                window.location.href = "/gestion-De-Colas/gestion/";
+            }
+        },
+        error: function (msg) {
+            console.log(msg.statusText);
+        }
+    });
+}
+

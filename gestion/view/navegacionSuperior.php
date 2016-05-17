@@ -14,7 +14,7 @@
                 <li><a href="#">Inicio</a></li>
                 <li><a style="cursor:pointer" onclick="menuPrincipal('perfil')">Perfil</a></li>
                 <li><a style="cursor:pointer" onclick="menuPrincipal('acerca')">Acerca de</a></li>
-                <li><a href="#">Cerrar sesión</a></li>
+                <li><a href="view/usuario/cerrarSesion.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </div>
