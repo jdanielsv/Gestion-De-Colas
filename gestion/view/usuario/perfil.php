@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php   
 
 require('./conf/conexion.php'); 
 $email= $_SESSION['email'];

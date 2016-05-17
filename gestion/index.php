@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 
 <html lang="es">
-
+<?php 
+    session_start();
+    if(!isset($_SESSION['id']))
+    {
+        header('Location: login.php');
+    }
+    
+    ?>
 <?php require(dirname(__FILE__) . '/view/header.php'); ?>
     <body cz-shortcut-listen="true">
         <?php require(dirname(__FILE__) . '/view/navegacionSuperior.php'); ?>
