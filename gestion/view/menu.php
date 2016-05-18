@@ -28,29 +28,23 @@ if ($conn->connect_error) {
 
 <div class="col-sm-3 col-md-2 sidebar">
 
-    <?php
+    <?php if($rol=='Admin') { ?>
+        <ul class="nav nav-sidebar">
+        <li class="active" id="usuariosMenu"><a style="cursor: pointer" onclick="menuPrincipal('usuarios')"><span class="fa fa-users"></span>
+        Listado usuarios</a></li>
+        </ul>
 
-    if($rol=='Admin')
-    {
-        echo "<ul class='nav nav-sidebar'>";
-        echo "<li class='active' id='usuariosMenu'><a style='cursor: pointer' onclick='menuPrincipal('usuarios')' ><span class='fa fa-users'></span>";
-        echo "Listado usuarios</a></li>";
-        echo "</ul>";
-
-        echo "<ul class='nav nav-sidebar'>";
-        echo "<li id='colaMenu'><a style='cursor: pointer' onclick='menuPrincipal('cola')'><span class='fa fa-clock-o'></span> Listado colas</a></li>";
-        echo "</ul>";
+        <ul class="nav nav-sidebar">
+        <li id='colaMenu'><a style='cursor: pointer' onclick="menuPrincipal('cola')"><span class="fa fa-clock-o"></span> Listado colas</a></li>
+        </ul>
 
 
-        echo "<ul class='nav nav-sidebar'>";
-        echo "<li id='configurarMenu'><a style='cursor: pointer' onclick='menuPrincipal('configuracion')'><span class='fa fa-cogs'></span>"; echo "Configurar página</a></li>";
-        echo "</ul>";
-    }else
-    {
-        echo "<ul class='nav nav-sidebar'>";
-        echo "<li id='colaMenu'><a style='cursor: pointer' onclick='menuPrincipal('cola')'><span class='fa fa-clock-o'></span> Listado colas</a></li>";
-        echo "</ul>";
-    }
-
-    ?>
+        <ul class='nav nav-sidebar'>
+        <li id="configurarMenu"><a style="cursor: pointer" onclick="menuPrincipal('configuracion')"><span class='fa fa-cogs'></span> Configurar página</a></li>
+        </ul>
+    <?php }else{ ?>
+        <ul class='nav nav-sidebar'>
+        <li class="active" id="colaMenu"><a style="cursor: pointer" onclick="menuPrincipal('cola')"><span class="fa fa-clock-o"></span> Listado colas</a></li>
+        </ul>
+    <?php } ?>
 </div>

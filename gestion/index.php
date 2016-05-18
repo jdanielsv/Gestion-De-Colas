@@ -37,8 +37,7 @@
             echo "</div>";
                 
             }
-            else
-            {
+            else{
                 
             echo "<div id='listaCola''>";
             require(dirname(__FILE__) . '/view/cola/colaMostrar.php');
