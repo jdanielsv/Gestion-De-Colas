@@ -1,10 +1,6 @@
 <?php
-    function conexion(){
-        return new mysqli("localhost", "root", "root", "cola");
-    }
-    function cerrarSesion(){
-        mysql_close();
-    }
+
+    require('../../conf/conexion.php');
 
     $conn=conexion(); 
 
@@ -14,9 +10,9 @@
     if ($con->connect_error) { 
         die("Fallo en la conexión: ".$con->connect_error); 
     }else{
-        $borrar="DELETE FROM usuario WHERE idusuario = '".$borrar."'";
+        $borrar="DELETE FROM cola WHERE idcola = '".$borrar."'";
         $conn->query($borrar);
-        cerrarSesion();
+            mysqli_close($conn);
     }
     
     echo "correcto";

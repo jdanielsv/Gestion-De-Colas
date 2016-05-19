@@ -11,11 +11,11 @@ function cerrarSesion(){
     
 $conn=conexion(); 
 
-$usuario=$_POST[nombre];
-$apellido=$_POST[apellido];
-$correo=$_POST[correo];
-$pass=$_POST[pass];
-$rol=$_POST[rol];
+$usuario=$_POST['nombre'];
+$apellido=$_POST['apellido'];
+$correo=$_POST['correo'];
+$pass=$_POST['pass'];
+$rol=$_POST['rol'];
 
 $con=conexion();
 if ($con->connect_error) { 

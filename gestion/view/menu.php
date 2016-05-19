@@ -1,5 +1,4 @@
 <?php   
-
 require('./conf/conexion.php'); 
 $email= $_SESSION['email'];
 $id=$_SESSION['id'];

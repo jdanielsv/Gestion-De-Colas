@@ -1,3 +1,9 @@
+<?php
+$sql="SELECT * FROM cola"; 
+$result = $conn->query($sql); 
+
+
+?>
 <h1 class="page-header">Listado de colas</h1>
 <div class="row">
     <div class="col-md-12">
@@ -13,6 +19,7 @@
                 </div>
             </div>
             <div class="panel-body">
+
                 <table class="table table-striped table-bordered table-list">
                     <thead>
                         <tr>
@@ -21,19 +28,31 @@
                             <th>Nombre</th>
                             <th>Fecha inicio</th>
                             <th>Fecha fin</th>
+                            <th>Usuario</th>
+                            <th>Codigo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+
+                        <?php
+                        while($row = $result->fetch_assoc()) { ?>
+                        <tr class='marcadoC'>
                             <td align="center">
-                                <a class="btn btn-default" data-toggle="modal" data-target="#actualizarCola"><em class="fa fa-pencil"></em></a>
-                                <a class="btn btn-danger" data-toggle="modal" data-target="#borrarCola"><em class="fa fa-trash"></em></a>
+                                <?php 
+                            echo "<a value=".$row["idcola"]." class='btn btn-default' onclick='capturarDatosActualizarC(".$row["idcola"].")' data-toggle='modal' data-target='#actualizarCola'><em class='fa fa-pencil'></em></a>&nbsp;&nbsp;&nbsp;";
+                            echo "<a value=".$row["idcola"]." class='btn btn-danger' data-toggle='modal' data-target='#borrarCola' onclick='capturarIdBorrarC(".$row["idcola"].")'><em class='fa fa-trash'></em></a>";
+                                ?>
                             </td>
-                            <td class="hidden-xs">1</td>
-                            <td>cola 1</td>
-                            <td>02-05-2016</td>
-                            <td>02-06-2016</td>
+                            <td class="hidden-xs"><?php echo $row['idcola']; ?></td>
+                            <td><?php echo $row['nombre']; ?></td>
+                            <td><?php echo $row['fecha_fin']; ?></td>
+                            <td><?php echo $row['fecha_inicio']; ?></td>
+                            <td><?php echo $row['usuario_idusuario']; ?></td>
+                            <td><?php echo $row['codigo_alta']; ?></td>
                         </tr>
+                        <?php } ?>
+
+
                     </tbody>
                 </table>
 
@@ -52,109 +71,117 @@
 <!-- Ventana emergente nueva cola -->
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title " id="myModalLabel"><span class="fa fa-clock-o"></span> Nueva cola</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="control-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Fecha inicio</label>
-                            <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title " id="myModalLabel"><span class="fa fa-clock-o"></span> Nueva cola</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha inicio</label>
+                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaInicio">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Fecha fin</label>
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control">
-                                <div style="cursor:pointer" class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha fin</label>
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaFin">
+                            <div style="cursor:pointer" class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="insertarCola()">Guardar</button>
-                </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="insertarCola()">Guardar</button>
             </div>
         </div>
     </div>
-    
-   <!-- Ventana emergente borrar -->
+</div>
 
-    <div class="modal fade" id="borrarCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <em class="fa fa-exclamation-triangle"></em>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <h5>¿Está seguro de que desea eliminar la cola seleccionado?</h5>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="borrarUsuario()">Aceptar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                </div>
+<!-- Ventana emergente borrar -->
+
+<div class="modal fade" id="borrarCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <em class="fa fa-exclamation-triangle"></em>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+
+                        <div style="display:none" id="valorBorrarC"></div>
+                        <h5>¿Está seguro de que desea eliminar la cola seleccionada?</h5>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="borrarCola()">Aceptar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
-    </div>  
- 
+    </div>
+</div>  
+
 <!-- Actualizar -->
 
 <div class="modal fade" id="actualizarCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-pencil"></span> Editar Cola</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="control-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Fecha inicio</label>
-                            <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span class="fa fa-pencil"></span> Editar Cola</h4>
+            </div>
+            <div class="modal-body">
+                <div style="display:none" id="idActualizarC"></div>
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreCo">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha inicio</label>
+                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaICo">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Fecha fin</label>
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control">
-                                <div style="cursor:pointer" class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha fin</label>
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaFCo">
+                            <div style="cursor:pointer" class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Código:</label>
+                        <input type="text" class="form-control" id="codigoC">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="actualizarCola()">Guardar</button>
             </div>
         </div>
-    </div>  
+    </div>
+</div>  
