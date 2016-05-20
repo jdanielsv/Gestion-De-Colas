@@ -66,9 +66,7 @@ function borrarUsuario(){
             'id': borrar
         },
         success: function (msg) {
-            if(msg=="correcto"){
                 window.location.href = "/gestion-De-Colas/gestion/";
-            }
         },
         error: function (msg) {
             console.log(msg.statusText);
@@ -162,12 +160,14 @@ function actualizarCola(){
     });
 }
 function insertarCola(){
-    var nombre=$("#nombre").val();
-    var fechaI=$("#fechaInicio").val();
-    var fechaF=$("#fechaFin").val();    
+    var nombre=$("#nombreA").val();
+    var fechaI=$("#fechaInicioA").val();
+    var fechaF=$("#fechaFinA").val();    
     var date = new Date();
     var year = date.getFullYear();
-    
+    var profesional=$("#profesional").val();
+    if(profesional==null)
+        profesional="";
     var claveRand=nombre+year;
     jQuery.ajax({
         type: "POST",
@@ -176,7 +176,8 @@ function insertarCola(){
             'nombre':nombre,
             'fechaI': fechaI,
             'fechaF':fechaF,
-            'claveRand':claveRand
+            'claveRand':claveRand,
+            'profesional':profesional
         },
         success: function (msg) {
             window.location.href = "/gestion-De-Colas/gestion/";
@@ -224,4 +225,8 @@ function login(){
         }
     });
 }
-
+ $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });

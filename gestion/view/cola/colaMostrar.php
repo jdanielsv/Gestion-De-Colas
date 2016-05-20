@@ -1,7 +1,16 @@
 <?php
-$sql="SELECT * FROM cola"; 
-$result = $conn->query($sql); 
+$result2;
 
+if($rol==='Admin'){
+    $sql="SELECT * FROM cola"; 
+    $sql2="SELECT idusuario,nombre,apellidos FROM usuario WHERE rol='Moderador'";
+    $result2 = $conn->query($sql2);
+}else
+{
+    $sql="SELECT * FROM cola where usuario_idusuario='".$id."'  "; 
+}
+
+$result = $conn->query($sql); 
 
 ?>
 <h1 class="page-header">Listado de colas</h1>
@@ -13,8 +22,13 @@ $result = $conn->query($sql);
                 <div class="row">
                     <div class="col col-xs-6">
                     </div>
+                    
                     <div class="col col-xs-6 text-right">
-                        <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#myModal"><span class="fa fa-clock-o"></span> Nueva cola</button>
+                        <?php if($rol==='Admin'){ ?>
+                        <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#nuevaCAdmin"><span class="fa fa-clock-o"></span> Nueva cola</button>
+                        <?php }else{ ?>
+                        <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#nuevaCAdmin"><span class="fa fa-clock-o"></span> Nueva cola</button>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -111,7 +125,61 @@ $result = $conn->query($sql);
         </div>
     </div>
 </div>
+<!-- Ventana emergente nueva admin -->
 
+<div class="modal fade" id="nuevaCAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title " id="myModalLabel"><span class="fa fa-clock-o"></span> Nueva cola</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreA">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha inicio</label>
+                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaInicioA">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Fecha fin</label>
+                        <div class="input-group date" data-provide="datepicker">
+                            <input type="text" class="form-control" id="fechaFinA">
+                            <div style="cursor:pointer" class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <?php if ($rol==='Admin') { ?>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Profesional:</label>
+                        <select class="form-control" id="profesional">
+                            
+                             <?php while($row2 = $result2->fetch_assoc()) { ?>
+                            <option value="<?php echo $row2['idusuario'] ?>"><?php echo $row2['nombre']." ".$row2['apellidos'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <?php } ?>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="insertarCola()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Ventana emergente borrar -->
 
 <div class="modal fade" id="borrarCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -164,24 +232,33 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="control-label">Fecha fin</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaFCo">
-                            <div style="cursor:pointer" class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                        <div id="datetimepicker1" class="input-append date">
+                            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                        <span class="add-on">
+                            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                            </i>
+                        </span>
+                    </div>
+                    </div>
+                <div class="form-group">
+                    <label for="message-text" class="control-label">Fecha fin</label>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" id="fechaFCo">
+                        <div style="cursor:pointer" class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">Código:</label>
-                        <input type="text" class="form-control" id="codigoC">
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Código:</label>
+                    <input type="text" class="form-control" id="codigoC">
+                </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="actualizarCola()">Guardar</button>
-            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="actualizarCola()">Guardar</button>
         </div>
     </div>
+</div>
 </div>  

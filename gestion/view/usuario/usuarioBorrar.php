@@ -3,7 +3,7 @@
         return new mysqli("localhost", "root", "root", "cola");
     }
     function cerrarSesion(){
-        mysql_close();
+        mysqli_close();
     }
 
     $conn=conexion(); 

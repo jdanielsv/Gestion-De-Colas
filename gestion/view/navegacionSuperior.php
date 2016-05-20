@@ -11,7 +11,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Inicio</a></li>
+                <?php if($rol==='Admin'){ ?>
+                <li><a style="cursor:pointer" onclick="menuPrincipal('usuarios')">Inicio</a></li>
+                <?php }else{ ?>
+                <li><a style="cursor:pointer" onclick="menuPrincipal('cola')">Inicio</a></li>
+                <?php } ?>
                 <li><a style="cursor:pointer" onclick="menuPrincipal('perfil')">Perfil</a></li>
                 <li><a style="cursor:pointer" onclick="menuPrincipal('acerca')">Acerca de</a></li>
                 <li><a href="view/usuario/cerrarSesion.php">Cerrar sesión</a></li>

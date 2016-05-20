@@ -5,7 +5,7 @@ function conexion(){
 }
 
 function cerrarSesion(){
-    mysql_close();
+    mysqli_close();
 }
 
 $id=$_POST[id];

@@ -6,7 +6,7 @@ function conexion(){
 }
 
 function cerrarSesion(){
-    mysql_close();
+    mysqli_close();
 }
     
 $conn=conexion(); 

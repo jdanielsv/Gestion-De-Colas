@@ -1,10 +1,4 @@
 <?php   
-$email= $_SESSION['email'];
-$id=$_SESSION['id'];
-$nombre="";
-$apellidos="";
-$rol="";
-$contrasenia="";
 
 if ($conn->connect_error) { 
     die("Fallo en la conexión: " . $conn->connect_error); 
@@ -50,7 +44,7 @@ if ($conn->connect_error) {
                             </tbody>
                         </table>
 
-                        <a href="#" class="btn btn-primary">Mis colas</a>
+                        <a class="btn btn-primary" onclick="menuPrincipal('cola')">Mis colas</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,9 @@ require('../../conf/conexion.php');
 $nombre=$_POST['nombre'];
 $fechaI=$_POST['fechaI'];
 $fechaF=$_POST['fechaF'];
-$idProfesional=$_SESSION['id'];
+$profesional=$_POST['profesional'];
+if($profesional==='')
+    $profesional=$_SESSION['id'];
 $claveRand=$_POST['claveRand'];
 
 $con=conexion();
@@ -12,7 +14,7 @@ if ($con->connect_error) {
     die("Fallo en la conexión: ".$con->connect_error); 
 }else{
 
-    $consulta="INSERT INTO cola.cola (nombre,fecha_fin,fecha_inicio,usuario_idusuario,codigo_alta) VALUES ('".$nombre."','".$fechaI."', '".$fechaF."','".$idProfesional."','".$claveRand."')";
+    $consulta="INSERT INTO cola.cola (nombre,fecha_fin,fecha_inicio,usuario_idusuario,codigo_alta) VALUES ('".$nombre."','".$fechaI."', '".$fechaF."','".$profesional."','".$claveRand."')";
     $con->query($consulta);
     cerrarSesion();
 
