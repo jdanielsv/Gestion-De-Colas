@@ -52,6 +52,16 @@ function capturarIdBorrar(valor){
     $("#valorBorrar").empty();
     $("#valorBorrar").append(valor);
 }
+var colaT;
+function capturarIdColaTemporal(valor){
+    $("#valorTemporal").empty();
+    $("#valorTemporal").append(valor);
+    colaT=parseInt($('#valorTemporal').html());
+}
+function colaTReturn()
+{
+    return colaT;
+}
 function capturarIdBorrarC(valor){
     $("#valorBorrarC").empty();
     $("#valorBorrarC").append(valor);

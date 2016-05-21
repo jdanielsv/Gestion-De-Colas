@@ -22,13 +22,9 @@ $result = $conn->query($sql);
                 <div class="row">
                     <div class="col col-xs-6">
                     </div>
-                    
+
                     <div class="col col-xs-6 text-right">
-                        <?php if($rol==='Admin'){ ?>
                         <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#nuevaCAdmin"><span class="fa fa-clock-o"></span> Nueva cola</button>
-                        <?php }else{ ?>
-                        <button type="button" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#nuevaCAdmin"><span class="fa fa-clock-o"></span> Nueva cola</button>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -53,6 +49,8 @@ $result = $conn->query($sql);
                         <tr class='marcadoC'>
                             <td align="center">
                                 <?php 
+
+                            echo "<a value=".$row["idcola"]." class='btn btn-success' onclick='capturarIdColaTemporal(".$row["idcola"].")' data-toggle='modal' data-target='#temporalesCola'><em class='fa fa-eye'></em></a>&nbsp;&nbsp;&nbsp;";
                             echo "<a value=".$row["idcola"]." class='btn btn-default' onclick='capturarDatosActualizarC(".$row["idcola"].")' data-toggle='modal' data-target='#actualizarCola'><em class='fa fa-pencil'></em></a>&nbsp;&nbsp;&nbsp;";
                             echo "<a value=".$row["idcola"]." class='btn btn-danger' data-toggle='modal' data-target='#borrarCola' onclick='capturarIdBorrarC(".$row["idcola"].")'><em class='fa fa-trash'></em></a>";
                                 ?>
@@ -77,55 +75,7 @@ $result = $conn->query($sql);
 </div>
 
 
-
-
-
-
-
 <!-- Ventana emergente nueva cola -->
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title " id="myModalLabel"><span class="fa fa-clock-o"></span> Nueva cola</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">Fecha inicio</label>
-                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaInicio">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    </div>                    
-
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">Fecha fin</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaFin">
-                            <div style="cursor:pointer" class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="insertarCola()">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Ventana emergente nueva admin -->
 
 <div class="modal fade" id="nuevaCAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -160,12 +110,12 @@ $result = $conn->query($sql);
                         </div>
                     </div>
 
-                     <?php if ($rol==='Admin') { ?>
+                    <?php if ($rol==='Admin') { ?>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Profesional:</label>
                         <select class="form-control" id="profesional">
-                            
-                             <?php while($row2 = $result2->fetch_assoc()) { ?>
+
+                            <?php while($row2 = $result2->fetch_assoc()) { ?>
                             <option value="<?php echo $row2['idusuario'] ?>"><?php echo $row2['nombre']." ".$row2['apellidos'] ?></option>
                             <?php } ?>
                         </select>
@@ -261,4 +211,50 @@ $result = $conn->query($sql);
         </div>
     </div>
 </div>
+</div>  
+<!-- Ventana emergente mostarTemporales -->
+
+<div class="modal fade" id="temporalesCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <em class="fa fa-exclamation-triangle"></em>
+            </div>
+            <div class="modal-body">
+                <div style="display:none" id="valorTemporal"></div>
+                <table class="table table-striped table-bordered table-list">
+                    <thead>
+                        <tr>
+                            <th><em class="fa fa-cog" ></em></th>
+                            <th class="hidden-xs">ID</th>
+                            <th>DNI</th>
+                            <th>NOMBRE</th>
+                            <th>ESTADO</th>
+                            <th>CÓDIGO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql3="SELECT idusuarioTemporales,DNI,nombreT,estado,codigo_cliente FROM usuariotemporales,cola_has_usuariotemporales where cola_idcola=10 AND usuarioTemporales_idusuarioTemporales=idusuarioTemporales"; 
+
+                        $result3 = $conn->query($sql3); 
+                        while($row3 = $result3->fetch_assoc()) { ?>
+                        <tr class='marcadoC'>
+                            <td></td>
+                            <td class="hidden-xs"><?php echo $row3['idusuarioTemporales']; ?></td>
+                            <td><?php echo $row3['DNI']; ?></td>
+                            <td><?php echo $row3['nombreT']; ?></td>
+                            <td><?php echo $row3['estado']; ?></td>
+                            <td><?php echo $row3['codigo_cliente']; ?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">  
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>  
