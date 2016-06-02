@@ -1,7 +1,4 @@
-
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
   background-color: #eee;
 }
 
@@ -76,4 +73,17 @@ body {
 }
 .margin-bottom-configuracion{
     margin-bottom: 2%;
+}
+.padding-detalle-cola{
+    padding-left: 5%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-left: 0px;
+}
+.padding-detalle-cola-sin-borde{
+    padding-left: 5%;
+    width: 100%;
+    margin-left: 0px;
+    
 }

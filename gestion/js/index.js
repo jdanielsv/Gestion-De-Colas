@@ -1,4 +1,23 @@
 
+/* Función que cambia el tema del backend */
+
+function cambiarTema(){
+    var valor=$("#tema-backend option:selected").text();
+    console.log(valor);
+    if(valor=="Azul"){
+        $("#tema").attr("href","css/backend-azul.css");
+    }
+    if(valor=="Negro"){
+        $("#tema").attr("href","css/backend-negro.css");
+    }
+    if(valor=="Rojo"){
+        $("#tema").attr("href","css/backend-rojo.css");
+    }
+    if(valor=="Rosa"){
+        $("#tema").attr("href","css/backend-rosa.css");
+    }
+}
+
 /* Menú principal */
 
 function menuPrincipal(valor) {
@@ -235,8 +254,51 @@ function login(){
         }
     });
 }
- $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'pt-BR'
-    });
-  });
+function quitarVentana(){
+    $("#perfil").hide();
+    $("#listausuarios").show();
+    $("#usuariosMenu").addClass("active");
+}
+
+/* Cerrar input configuracion */
+
+function cerrarInput(){
+    if($("#tituloWebBackend").val()!=null){
+        $("#tituloWebBackendSwitch").attr( 'checked', 'checked' );
+        $('#tituloWebBackend').attr('disabled', 'disabled');
+    }
+    if($("#logoInput").val()!=null){
+        $("#logoInputSwitch").attr( 'checked', 'checked' );
+        $('#logoInput').attr('disabled', 'disabled');
+    }
+    if($("#textoFooter").val()!=null){
+        $("#textoFooterSwitch").attr( 'checked', 'checked' );
+        $('#textoFooter').attr('disabled', 'disabled');
+    }
+    if($("#descripcion").val()!=null){
+        $("#descripcionSwitch").attr( 'checked', 'checked' );
+        $('#descripcion').attr('disabled', 'disabled');
+    }
+    if($("#tituloVentanaPrincipal").val()!=null){
+        $("#tituloVentanaPrincipalSwitch").attr( 'checked', 'checked' );
+        $('#tituloVentanaPrincipal').attr('disabled', 'disabled');
+    }
+}
+
+/* Desactivar la opcion de editar de los switch */
+
+function cambiarTituloWeb(){
+    $('#tituloWebBackend').removeAttr('disabled', 'disabled');
+}
+function cambiarLogo(){
+    $('#logoInput').removeAttr('disabled', 'disabled');
+}
+function cambiarTextoFooter(){
+    $('#textoFooter').removeAttr('disabled', 'disabled');
+}
+function cambiarDecripcion(){
+    $('#descripcion').removeAttr('disabled', 'disabled');
+}
+function cambiarTituloBackend(){
+    $('#tituloVentanaPrincipal').removeAttr('disabled', 'disabled');
+}

@@ -11,6 +11,42 @@ if($rol==='Admin'){
 }
 
 $result = $conn->query($sql); 
+/** Metodo para controlar la fecha de la tabla y saber el estado en el que se encuentra actualmente **/
+
+function controlarFecha($fechainicio,$fechaFin){
+    
+    $fecha_a_evaluar=date("Y-m-d");
+    $fechaFINArray=explode('/', $fechaFin, 3);
+    $fechaINICIOrray=explode('/', $fechainicio, 3);
+    $dia=$fechaINICIOrray[0];
+    $mes=$fechaINICIOrray[1];
+    $anio=$fechaINICIOrray[2];
+    $fechaINICIO1=$anio."-".$mes."-".$dia;
+    $dia=$fechaFINArray[0];
+    $mes=$fechaFINArray[1];
+    $anio=$fechaFINArray[2];
+    $fechaFIN1=$anio."-".$mes."-".$dia;
+    
+    
+    if(dentroRango($fechaINICIO1, $fechaFIN1, $fecha_a_evaluar)) {
+        return "<span class='label label-success'>En proceso</span>";
+    } else {
+        if($fechaINICIO1>$fecha_a_evaluar){
+            return "<span class='label label-primary'>No empezado</span>";
+        }else{
+            return "<span class='label label-danger'>Finalizado</span>";
+        }
+    }
+    
+        
+}
+/* Funcion que devuelve si esta dentro del rango */
+function dentroRango($start_date, $end_date, $evaluame) {
+    $start_ts = strtotime($start_date);
+    $end_ts = strtotime($end_date);
+    $user_ts = strtotime($evaluame);
+    return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
+}
 
 ?>
 <h1 class="page-header">Listado de colas</h1>
@@ -40,6 +76,7 @@ $result = $conn->query($sql);
                             <th>Fecha fin</th>
                             <th>Usuario</th>
                             <th>Codigo</th>
+                            <th class="text-center">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,6 +98,7 @@ $result = $conn->query($sql);
                             <td><?php echo $row['fecha_inicio']; ?></td>
                             <td><?php echo $row['usuario_idusuario']; ?></td>
                             <td><?php echo $row['codigo_alta']; ?></td>
+                             <td class="text-center"><?php echo controlarFecha($row['fecha_inicio'],$row['fecha_fin']); ?></td>
                         </tr>
                         <?php } ?>
 

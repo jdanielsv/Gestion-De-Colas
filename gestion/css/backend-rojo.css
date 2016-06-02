@@ -1,0 +1,46 @@
+.divider{
+    border-bottom:  1px solid #D9534F ;
+}
+.panel-info>.panel-heading {
+    color: white;
+    background-color: #D9534F;
+    border-color: #D9534F;
+}
+.panel-info {
+    border-color: #D9534F;
+}
+.panel-footer {
+    border-top: 1px solid #D9534F;
+}
+.navbar-inverse {
+    background-color: #D9534F;
+    border-color: #D9534F;
+}
+a {
+    color: black;
+}
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+    color: white;
+    background-color: #D9534F;
+}
+.btn-primary:hover {
+    color: white;
+    background-color: #D9534F;
+    border-color: #D9534F;
+}
+.btn-primary {
+    color: white;
+    background-color: #D9534F;
+    border-color: #D9534F;
+}
+.btn-primary:focus {
+    color: white;
+    background-color: #D9534F;
+    border-color: #D9534F;
+}
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}

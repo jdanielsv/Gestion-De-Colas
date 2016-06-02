@@ -1,0 +1,40 @@
+.divider{
+    border-bottom:  1px solid #101010 ;
+}
+.panel-info>.panel-heading {
+    color: white;
+    background-color: #101010;
+    border-color: #101010;
+}
+.panel-info {
+    border-color: #101010;
+}
+.panel-footer {
+    border-top: 1px solid #101010;
+}
+.navbar-inverse {
+    background-color: #101010;
+    border-color: #101010;
+}
+a {
+    color: black;
+}
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+    color: white;
+    background-color: #101010;
+}
+.btn-primary:hover {
+    color: white;
+    background-color: #101010;
+    border-color: #101010;
+}
+.btn-primary {
+    color: white;
+    background-color: #101010;
+    border-color: #101010;
+}
+.btn-primary:focus {
+    color: white;
+    background-color: #101010;
+    border-color: #101010;
+}

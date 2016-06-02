@@ -1,0 +1,24 @@
+.divider{
+    border-bottom:  1px solid #428BCA ;
+}
+.panel-info>.panel-heading {
+    color: white;
+    background-color: #428BCA;
+    border-color: #337AB7;
+}
+.panel-info {
+    border-color: #337AB7;
+}
+.panel-footer {
+    border-top: 1px solid #428BCA;
+}
+.navbar-inverse {
+    background-color: #428BCA;
+    border-color: #428BCA;
+}
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
