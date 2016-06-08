@@ -29,7 +29,7 @@ function conexion(){
         <nav id="color-nav" class="navbar navbar-fixed-top navbar-dark bg-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand"><?php echo $titulo; ?></a>
+                    <a class="navbar-brand"></a>
                     <a class="navbar-brand" href="/gestion-De-Colas/gestion/login.php">Iniciar sesión</a>
                 </div>
             </div>
@@ -67,7 +67,7 @@ function conexion(){
                         
 
                         <div class="panel-footer"></div>
-                    </div>
+                    </div>  
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-info">
