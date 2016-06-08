@@ -96,7 +96,7 @@ if ($conn2->connect_error) {
                     </div>
                     <div class="panel-footer">
                         <!--CAMBIAR AQUÍ PARA CAPTURAR VALOR ID COLA -->
-                        <button type="button" onclick="capturarIdCola(5)" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#insertarUsuarioTemporal"><i class="glyphicon glyphicon-plus"></i></button>
+                        <button type="button" onclick="capturarIdCola(10)" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#insertarUsuarioTemporal"><i class="glyphicon glyphicon-plus"></i></button>
                     </div>
                 </div>
             </div>
