@@ -1,7 +1,6 @@
 <?php 
-function conexion(){
-    return new mysqli("localhost", "root", "root", "cola");
-}
+
+require('./conf/conexion.php');
 $conn2=conexion(); 
 $titulo=null;
 $logo=null;
@@ -28,6 +27,7 @@ if ($conn2->connect_error) {
         <title>Gestión de colas</title>
         <link rel="stylesheet" href="/gestion-De-Colas/visualizacion/css/bootstrap.min.css">
         <script src="/gestion-De-Colas/visualizacion/js/jquery.min.js"></script>
+        <script src="/gestion-De-Colas/visualizacion/js/index.js"></script>
         <script src="/gestion-De-Colas/visualizacion/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/gestion-De-Colas/visualizacion/css/starter-template.css">
         <link href="/gestion-De-Colas/visualizacion/css/switch.css" rel="stylesheet">
@@ -95,7 +95,8 @@ if ($conn2->connect_error) {
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>boton para asignarse, camabiar icono
+                        <!--CAMBIAR AQUÍ PARA CAPTURAR VALOR ID COLA -->
+                        <button type="button" onclick="capturarIdCola(5)" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#insertarUsuarioTemporal"><i class="glyphicon glyphicon-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -157,5 +158,42 @@ if ($conn2->connect_error) {
                 </div>
             </div>
         </div>
+        <!-- Ventana emergente nuevo -->
+
+    <div class="modal fade" id="insertarUsuarioTemporal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title " id="myModalLabel"><span class="fa fa-user"></span>Añadirse a la cola</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div style="display:none" id="valorCola"></div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreT" name="nombre" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidoT" name="apellidoT" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">DNI</label>
+                            <input type="text" class="form-control" id="DNIT" name="DNIT" placeholder="DNI">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Clave</label>
+                            <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave">
+                        </div>
+                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" onclick="insertarUsuarioTemporal()">Guardar</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </body>
     </html>

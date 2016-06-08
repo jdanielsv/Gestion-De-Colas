@@ -181,7 +181,7 @@ function dentroRango($start_date, $end_date, $evaluame) {
                 <form>
                     <div class="form-group">
 
-                        <div style="display:none" id="valorBorrarC"></div>
+                        <div style="display:none" id="valorCola"></div>
                         <h5>¿Está seguro de que desea eliminar la cola seleccionada?</h5>
                     </div>
                 </form>

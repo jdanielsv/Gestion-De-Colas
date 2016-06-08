@@ -43,15 +43,60 @@ function conexion(){
             </div>
         </nav>
         <div class="row" style="padding: 3%;padding-left: 5%;padding-bottom: 8%;">
-           
-           <?php
-            while($row = $result->fetch_assoc()) { ?>
+                <div class="col-md-8">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-6" style="padding:5px 10px;">
+                                    <h3 id="idCola" name="" class="panel-title"></h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                   <a href="/Gestion-De-Colas/visualizacion/detalleCola.php/" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="titulo-contenido text-center">
+                            <div class="col-md-6">
+                                <label for="">Código</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Posición</label>
+                            </div>
+                        </div>
+                        <div class="contenido text-center">
+                            <div class="col-md-6">
+                                <label for="">#87PQ</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">03</label>
+                            </div>
+                        </div>
+                        <div class="contenido text-center">
+                            <div class="col-md-6">
+                                <label for="">#87PQ</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">02</label>
+                            </div>
+                        </div>
+                        <div class="contenido text-center">
+                            <div class="col-md-6">
+                                <label for="">#87PQ</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">01</label>
+                            </div>
+                            </div>
+                        <div class="panel-footer"></div>
+                    </div>
+                </div>
                 <div class="col-md-4">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-md-6" style="padding:5px 10px;">
-                                    <h3 id="idCola" name="<?php echo $row["idcola"]; ?>" class="panel-title"><?php echo $row["nombre"]; ?></h3>
+                                    <h3 id="idCola" name="" class="panel-title"></h3>
                                 </div>
                                 <div class="col-md-6 text-right">
                                    <a href="/Gestion-De-Colas/visualizacion/detalleCola.php/" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
@@ -94,7 +139,6 @@ function conexion(){
                         <div class="panel-footer"></div>
                     </div>
                 </div>
-            <?php } ?>
         </div>
         <div class="footer">
            <div class="row">
@@ -105,4 +149,4 @@ function conexion(){
            </div>
         </div>
     </body>
-    </html>
+</html>

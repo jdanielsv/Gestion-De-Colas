@@ -216,6 +216,7 @@ function insertarCola(){
         }
     });
 }
+
 function borrarCola(){
     var borrar=$('#valorBorrarC').html();
     jQuery.ajax({
