@@ -76,6 +76,21 @@ function capturarIdColaTemporal(valor){
     $("#valorTemporal").empty();
     $("#valorTemporal").append(valor);
     colaT=parseInt($('#valorTemporal').html());
+    console.log(valor);
+    jQuery.ajax({
+        type: "POST",
+        url: "/gestion-De-Colas/gestion/view/cola/colaActual.php",
+        data: {
+            'id': valor
+        },
+        success: function (msg) {
+            $("#cuerpoConsulta").empty();
+            $("#cuerpoConsulta").append(msg);
+        },
+        error: function (msg) {
+            console.log(msg.statusText);
+        }
+    });
 }
 function colaTReturn()
 {
@@ -162,6 +177,9 @@ function actualizarUsuario(){
         }
     });
 }
+
+/** Actualiza la cola **/
+
 function actualizarCola(){
    var id=$('#idActualizarC').html();
     
@@ -188,6 +206,9 @@ function actualizarCola(){
         }
     });
 }
+
+/* Crea una nueva cola en el backend */
+
 function insertarCola(){
     var nombre=$("#nombreA").val();
     var fechaI=$("#fechaInicioA").val();
@@ -209,6 +230,7 @@ function insertarCola(){
             'profesional':profesional
         },
         success: function (msg) {
+            console.log(msg);
             window.location.href = "/gestion-De-Colas/gestion/";
         },
         error: function (msg) {
@@ -216,7 +238,6 @@ function insertarCola(){
         }
     });
 }
-
 function borrarCola(){
     var borrar=$('#valorBorrarC').html();
     jQuery.ajax({
