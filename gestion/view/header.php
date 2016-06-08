@@ -8,8 +8,9 @@
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.js"></script>
+    <script src="js/moment.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
     <script src="js/index.js"></script>
     <link id="tema" rel="stylesheet" href="css/backend-azul.css">
 </head>

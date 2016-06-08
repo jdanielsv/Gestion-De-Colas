@@ -49,6 +49,8 @@ function dentroRango($start_date, $end_date, $evaluame) {
 }
 
 ?>
+
+
 <h1 class="page-header">Listado de colas</h1>
 <div class="row">
     <div class="col-md-12">
@@ -84,7 +86,7 @@ function dentroRango($start_date, $end_date, $evaluame) {
                         <?php
                         while($row = $result->fetch_assoc()) { ?>
                         <tr class='marcadoC'>
-                            <td align="center">
+                            <td style="width:20%" align="center">
                                 <?php 
 
                             echo "<a value=".$row["idcola"]." class='btn btn-success' onclick='capturarIdColaTemporal(".$row["idcola"].")' data-toggle='modal' data-target='#temporalesCola'><em class='fa fa-eye'></em></a>&nbsp;&nbsp;&nbsp;";
@@ -130,24 +132,22 @@ function dentroRango($start_date, $end_date, $evaluame) {
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">Fecha inicio</label>
-                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaInicioA">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' id="fechaInicioA" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
-                    </div>                    
-
+                    </div>                     
                     <div class="form-group">
                         <label for="message-text" class="control-label">Fecha fin</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaFinA">
-                            <div style="cursor:pointer" class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' id="fechaFinA" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
-                    </div>
-
+                    </div> 
                     <?php if ($rol==='Admin') { ?>
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Profesional:</label>
@@ -181,7 +181,7 @@ function dentroRango($start_date, $end_date, $evaluame) {
                 <form>
                     <div class="form-group">
 
-                        <div style="display:none" id="valorCola"></div>
+                        <div style="display:none" id="valorBorrarC"></div>
                         <h5>¿Está seguro de que desea eliminar la cola seleccionada?</h5>
                     </div>
                 </form>
@@ -212,29 +212,20 @@ function dentroRango($start_date, $end_date, $evaluame) {
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">Fecha inicio</label>
-                        <div style="cursor:pointer" class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control" id="fechaICo">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
+                        <div class='input-group date' id='datetimepicker3'>
+                            <input type='text' id="fechaICo" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div id="datetimepicker1" class="input-append date">
-                            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-                        <span class="add-on">
-                            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                            </i>
-                        </span>
-                    </div>
                     </div>
                 <div class="form-group">
                     <label for="message-text" class="control-label">Fecha fin</label>
-                    <div class="input-group date" data-provide="datepicker">
-                        <input type="text" class="form-control" id="fechaFCo">
-                        <div style="cursor:pointer" class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
+                    <div class='input-group date' id='datetimepicker4'>
+                        <input type='text' id="fechaFCo" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -272,22 +263,7 @@ function dentroRango($start_date, $end_date, $evaluame) {
                             <th>CÓDIGO</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        $sql3="SELECT idusuarioTemporales,DNI,nombreT,estado,codigo_cliente FROM usuariotemporales,cola_has_usuariotemporales where cola_idcola=10 AND usuarioTemporales_idusuarioTemporales=idusuarioTemporales"; 
-
-                        $result3 = $conn->query($sql3); 
-                        while($row3 = $result3->fetch_assoc()) { ?>
-                        <tr class='marcadoC'>
-                            <td></td>
-                            <td class="hidden-xs"><?php echo $row3['idusuarioTemporales']; ?></td>
-                            <td><?php echo $row3['DNI']; ?></td>
-                            <td><?php echo $row3['nombreT']; ?></td>
-                            <td><?php echo $row3['estado']; ?></td>
-                            <td><?php echo $row3['codigo_cliente']; ?></td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
+                    <tbody id="cuerpoConsulta"></tbody>
                 </table>
             </div>
             <div class="modal-footer">  
@@ -296,3 +272,14 @@ function dentroRango($start_date, $end_date, $evaluame) {
         </div>
     </div>
 </div>  
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker();
+        $('#datetimepicker3').datetimepicker();
+        $('#datetimepicker4').datetimepicker();
+    });
+</script>
+
+
