@@ -43,7 +43,7 @@ function conexion(){
                                     <h3 id="idCola" name="" class="panel-title"></h3>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                   <a href="/Gestion-De-Colas/visualizacion/detalleCola.php/" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+
                                     <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                 </div>
                             </div>
@@ -89,7 +89,10 @@ function conexion(){
                         <?php while($row = $result2->fetch_assoc()) { ?>
                         <div class="contenido text-center">
                             <div class="col-md-4">
-                                <label for=""><a value="<?php echo $row["idcola"]; ?>" href="/Gestion-De-Colas/visualizacion/detalleCola.php/" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></label>
+                                <label for=""><a value="<?php echo $row["idcola"]; ?>" >
+                                    <?php 
+                                    echo "<a value=".$row["idcola"]." class='btn btn-success' onclick='enviarID(".$row["idcola"].")' ><em class='glyphicon glyphicon-eye-open'></em></a>&nbsp;&nbsp;&nbsp;";
+                                    ?>
                             </div>
                             <div class="col-md-8">
                                 <label for=""><?php echo $row["nombre"]; ?></label>
@@ -105,8 +108,8 @@ function conexion(){
         <div class="footer">
            <div class="row">
                <div class="col-md-12 text-center" style="padding-top:1%">
-                   <p><?php echo $footer; ?></p>
-                   <p><?php echo $descripcion; ?></p>
+                   <p></p>
+                   <p></p>
                </div>
            </div>
         </div>

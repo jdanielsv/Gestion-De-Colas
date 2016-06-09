@@ -33,3 +33,20 @@ function capturarIdCola(valor){
     $("#valorCola").empty();
     $("#valorCola").append(valor);
 }
+function enviarID(valor){
+    var id=valor;
+    jQuery.ajax({
+        type: "POST",
+        url: "/gestion-De-Colas/visualizacion/detalleCola.php",
+        data: {
+            'id':id
+        },  
+        success: function (msg) {
+            document.write(msg);
+            
+        },
+        error: function (msg) {
+            console.log(msg.statusText);
+        }
+    });
+}

@@ -17,7 +17,7 @@ if ($con->connect_error) {
     }*/
     
     
-    $variable;
+    $variable=null;
     foreach ($result3 as $row3) {
         $variable.="<tr class='marcadoC'><td align='center'></td><td align='center'>".$row3['idusuarioTemporales']."</td><td align='center'>".$row3['DNI']."</td><td align='center'>".$row3['nombreT']."</td><td align='center'>".$row3['estado']."</td><td align='center'>".$row3['codigo_cliente']."</td></tr>";
     }
