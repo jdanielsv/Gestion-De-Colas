@@ -9,4 +9,5 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/gestion-De-Colas/visualizacion/css/style.css">
     <link id="tema" rel="stylesheet" href="/gestion-De-Colas/visualizacion/css/view-azul.css">
+    <script src="/gestion-De-Colas/visualizacion/js/index.js"></script>
 </head>
