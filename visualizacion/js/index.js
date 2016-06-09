@@ -33,3 +33,38 @@ function capturarIdCola(valor){
     $("#valorCola").empty();
     $("#valorCola").append(valor);
 }
+
+function cargarDepartamentos(){
+    console.log("entro");
+    jQuery.ajax({
+        type: "POST",
+        url: "/gestion-De-Colas/visualizacion/PHP/mostrarUsuarioCola.php",  
+        success: function (msg) {
+            $("#contenedorColas").empty();
+            $("#contenedorColas").append(msg);
+            //setInterval(cargarDepartamentos, 10000);
+        },
+        error: function (msg) {
+            console.log(msg.statusText);
+        }
+    });
+}
+
+/* Expandir las colas en el index */
+
+function expandirColasIndex(){
+    console.log("entrasasa");
+    if($("#panelTodasColas").hasClass("col-md-8")){
+        $("#panelTodasColas").removeClass("col-md-8");
+        $("#panelTodasColas").addClass("col-md-12");
+        $("#panelDepartamentos").removeClass("col-md-4");
+        $("#panelDepartamentos").hide();
+    }else{
+        $("#panelTodasColas").removeClass("col-md-12");
+        $("#panelTodasColas").addClass("col-md-8");
+        $("#panelDepartamentos").addClass("col-md-4");
+        $("#panelDepartamentos").show();
+    }
+    
+    
+}

@@ -23,7 +23,7 @@ function conexion(){
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <?php require(dirname(__FILE__) . '/header.php'); ?>
     <script>
-        //cargarDepartamentos();
+        cargarDepartamentos();
     </script>
     <body cz-shortcut-listen="true">
         <nav id="color-nav" class="navbar navbar-fixed-top navbar-dark bg-inverse">
@@ -35,7 +35,7 @@ function conexion(){
             </div>
         </nav>
         <div class="row" style="padding: 3%;padding-left: 5%;padding-bottom: 8%;">
-                <div class="col-md-8">
+                <div class="col-md-8" id="panelTodasColas">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="row">
@@ -43,7 +43,7 @@ function conexion(){
                                     <h3 id="idCola" name="" class="panel-title"></h3>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                   <a href="/Gestion-De-Colas/visualizacion/detalleCola.php/" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                   <a onclick="expandirColasIndex()" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                                     <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                 </div>
                             </div>
@@ -56,20 +56,11 @@ function conexion(){
                                 <label for="">Departamento</label>
                             </div>
                         </div>
-                        <div class="contenido text-center">
-                            <div class="col-md-6">
-                                <label for="">#87PQ</label>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">03</label>
-                            </div>
-                        </div>
-                        
-
+                        <div id="contenedorColas"></div>
                         <div class="panel-footer"></div>
                     </div>  
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" id="panelDepartamentos">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="row">
