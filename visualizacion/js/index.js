@@ -30,6 +30,7 @@ function insertarUsuarioTemporal(){
     });
 }
 function capturarIdCola(valor){
+    
     $("#valorCola").empty();
     $("#valorCola").append(valor);
 }
@@ -64,7 +65,23 @@ function expandirColasIndex(){
         $("#panelTodasColas").addClass("col-md-8");
         $("#panelDepartamentos").addClass("col-md-4");
         $("#panelDepartamentos").show();
-    }
-    
-    
+    }   
+}
+
+function enviarID(valor){
+    var id=valor;
+    jQuery.ajax({
+        type: "POST",
+        url: "/gestion-De-Colas/visualizacion/detalleCola.php",
+        data: {
+            'id':id
+        },  
+        success: function (msg) {
+            document.write(msg);
+            
+        },
+        error: function (msg) {
+            console.log(msg.statusText);
+        }
+    });
 }

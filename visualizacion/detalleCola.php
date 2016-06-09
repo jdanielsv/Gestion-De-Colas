@@ -1,8 +1,14 @@
 <?php 
 
 require('./conf/conexion.php');
+
+//Parte para recoger los datos del post del index.php
+$id=$_POST['id'];
+
+
+//fin
 $conn2=conexion(); 
-$titulo=null;
+$titulo=null; 
 $logo=null;
 $descripcion=null;
 $footer=null;
@@ -17,6 +23,12 @@ if ($conn2->connect_error) {
         $descripcion=$row["descripcion"];
         $footer=$row["footer"];
     }
+    $sql2="SELECT * FROM cola WHERE idcola=$id";
+    $resultado=$conn2->query($sql2);
+    $cola = $resultado->fetch_row();
+    $sql2="SELECT * FROM usuario WHERE idusuario=$cola[4]";
+    $resultado=$conn2->query($sql2);
+    $usuario = $resultado->fetch_row();
 }
 
 ?>
@@ -39,7 +51,7 @@ if ($conn2->connect_error) {
         <nav id="color-nav" class="navbar navbar-fixed-top navbar-dark bg-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="/gestion-De-Colas/visualizacion/index.php" class="navbar-brand"><?php echo $titulo; ?></a>
+                    <a href="/gestion-De-Colas/visualizacion/index.php" class="navbar-brand"><?php echo $titulo?></a>
                     <a class="navbar-brand" href="/gestion-De-Colas/gestion/login.php">Iniciar sesión</a>
                 </div>
             </div>
@@ -59,7 +71,7 @@ if ($conn2->connect_error) {
                     </div>
                     <div class="row padding-detalle-cola">
                         <div class="col-md-12">
-                            <h2>Nombre</h2>
+                            <h2><?php echo $cola[1];?></h2>
                         </div>
                     </div>
                     <div class="row padding-detalle-cola">
@@ -75,7 +87,7 @@ if ($conn2->connect_error) {
                             <h5>Fecha Inicio</h5>
                         </div>
                         <div class="col-md-6">
-                            <h5>02-03-2015</h5>
+                            <h5><?php echo $cola[3];?></h5>
                         </div>
                     </div>
                     <div class="row padding-detalle-cola">
@@ -83,7 +95,7 @@ if ($conn2->connect_error) {
                             <h5>Fecha Fin</h5>
                         </div>
                         <div class="col-md-6">
-                            <h5>02-03-2015</h5>
+                            <h5><?php echo $cola[2];?></h5>
                         </div>
                     </div>
                     <div class="row padding-detalle-cola-sin-borde">
@@ -91,12 +103,12 @@ if ($conn2->connect_error) {
                             <h5>Moderador</h5>
                         </div>
                         <div class="col-md-6">
-                            <h5>Daniel Salas Villaldea</h5>
+                            <h5><?php echo $usuario[1]." ".$usuario[2];?></h5>
                         </div>
                     </div>
                     <div class="panel-footer">
                         <!--CAMBIAR AQUÍ PARA CAPTURAR VALOR ID COLA -->
-                        <button type="button" onclick="capturarIdCola(10)" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#insertarUsuarioTemporal"><i class="glyphicon glyphicon-plus"></i></button>
+                        <button type="button" onclick="capturarIdCola(<?php echo $id; ?>)" class="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#insertarUsuarioTemporal"><i class="glyphicon glyphicon-plus"></i></button>
                     </div>
                 </div>
             </div>
