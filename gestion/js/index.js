@@ -324,3 +324,17 @@ function cambiarDecripcion(){
 function cambiarTituloBackend(){
     $('#tituloVentanaPrincipal').removeAttr('disabled', 'disabled');
 }
+
+/* Aceptar usuario dentro de la cola */
+
+function aceptarUsuarioCola(idUsuario){
+    var cola=$("#valorTemporal").html();
+    console.log("Entraa " + idUsuario + " cola :" + cola);
+}
+
+/* Expulsar usuario de la cola */
+
+function borrarUsuarioCola(idUsuario){
+    var cola=$("#valorTemporal").html();
+    console.log("Entraa " + idUsuario + " cola :" + cola);
+}

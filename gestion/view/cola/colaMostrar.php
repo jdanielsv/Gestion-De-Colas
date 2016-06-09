@@ -244,7 +244,7 @@ function dentroRango($start_date, $end_date, $evaluame) {
 <!-- Ventana emergente mostarTemporales -->
 
 <div class="modal fade" id="temporalesCola" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" style="width:645px" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -255,12 +255,13 @@ function dentroRango($start_date, $end_date, $evaluame) {
                 <table class="table table-striped table-bordered table-list">
                     <thead>
                         <tr>
-                            <th><em class="fa fa-cog" ></em></th>
                             <th class="hidden-xs">ID</th>
                             <th>DNI</th>
                             <th>NOMBRE</th>
                             <th>ESTADO</th>
                             <th>CÓDIGO</th>
+                            <th>POSICIÓN</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="cuerpoConsulta"></tbody>
